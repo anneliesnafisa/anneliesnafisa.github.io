@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>5211942000011 - ANNELIES NAFISA WIDI A</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+         .label {
+            float: left;
+            width: 150px;
+        }
+
+        .infobox {
+            width: 150px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 150px;
+            margin-top: 10px;
+            font-size: 1.5em;
+            background-color:
+                green;
+            color: blue;
+        }
+
+        option {
+            background-color: red;
+            color: white;
+        }
+
+        .meal {
+            background-color: cyan;
+            color: blue;
+        }
+    </style>
+    <script>
+        $(document).ready(function () { //The ready event occurs when the DOM (document object model) has been loaded.
+            $('.error').hide(); // label with error class name hidden
+            $('option:odd').addClass('meal'); // adds one or more class names to the selected elements.
+            $('.submit').click(function (event) { //The click event occurs when an element is clicked.
+                var selectedopts = ""; // explaining variables results
+                var count = $('select option:selected').val(); //return the value of "select option:selected"
+                if (count == 0) { // express if-else
+                    $('p.result').hide(); //hide result if there is no selected item
+                    $('.error').show(); //it shows an error
+                }
+                else { // express else value from above result
+                    $('select option:selected').each(function () { // specifies a function to run for each matched element
+                        selectedopts += $(this).text() + ","; // sets or returns the text content of the selectedopts.
+                    });
+                    $('.error').hide(); // label with error class name hidden
+                    $('p.result').show(); // label with result class name shown
+                    $('p.result').text('You have selected ' + selectedopts); //label with result class name shown as " You have selected + selectedopts"
+                }
+                event.preventDefault(); //cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+            });
+        });
+    </script>
+</head>
+<div class="container">
+
+    <body>
+        <form>
+            <span class="label">Select the Books </span>
+            <select id="food" class="infobox" MULTIPLE>
+                <option value="0">Select a Book</option>
+                <option value="Pizza $5">Kids Book $5</option>
+                <option value="HotDog $2">Teen Book $2</option>
+                <option value="Coke $4">Adult Book $4</option>
+                <option value="French Fries $3">Music Book $3</option>
+            </select>
+            <p class="error">You have not selected any Option </p>
+            <p class="result"></p>
+            <input class="submit" type="image" value="Submit" src="images/submitbtn.png" width="100" height="60">
+        </form>
+    </body>
+
+</div>
+
+</html>
